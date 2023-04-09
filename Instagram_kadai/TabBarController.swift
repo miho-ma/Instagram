@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -22,6 +23,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser == nil{
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is ImageSelectViewController{
             let imageSelectViewController = storyboard!.instantiateViewController(withIdentifier: "ImageSelect")
@@ -31,16 +40,4 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             return true
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
