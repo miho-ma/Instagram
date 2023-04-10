@@ -30,8 +30,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
      
-//        tableView.rowHeight = UITableView.automaticDimension
-        tableView.rowHeight = 700
+        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = 700
     }
 
     override func viewWillAppear(_ animated: Bool) {
